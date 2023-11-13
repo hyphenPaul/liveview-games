@@ -18,3 +18,39 @@ button[data-value="x"] {
 button[data-winner] {
   background-color: green;
 }
+
+div[data-failcount="1"] {
+  background-image: url("/images/hm-1.svg")
+}
+
+div[data-failcount="2"] {
+  background-image: url("/images/hm-2.svg")
+}
+
+div[data-failcount="3"] {
+  background-image: url("/images/hm-3.svg")
+}
+
+div[data-failcount="4"] {
+  background-image: url("/images/hm-4.svg")
+}
+
+div[data-failcount="5"] {
+  background-image: url("/images/hm-5.svg")
+}
+
+div[data-failcount="6"] {
+  background-image: url("/images/hm-6.svg")
+}
+
+div[data-failcount="7"] {
+  background-image: url("/images/hm-7.svg")
+}
+
+p[data-state="lost"] {
+  color: red;
+}
+
+p[data-state="won"] {
+  color: green;
+}

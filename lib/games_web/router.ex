@@ -19,6 +19,7 @@ defmodule GamesWeb.Router do
 
     get "/", PageController, :home
     live "/tic-tac-toe", TicTacToe
+    live "/hangman", Hangman
   end
 
   # Other scopes may use custom stacks.

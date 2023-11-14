@@ -7,8 +7,8 @@ defmodule GamesWeb.Hangman do
 
   def handle_event("on_keyup", %{"key" => key}, %{assigns: %{game: game}} = socket) do
     case Games.Hangman.guess_letter(game, key) do
-      {:ok, game} -> {:noreply, assign(socket, :game, game)} |> IO.inspect()
-      {:error, error_string} -> {:noreply, put_flash(socket, :info, error_string)} |> IO.inspect()
+      {:ok, game} -> {:noreply, assign(socket, :game, game)}
+      {:error, error_string} -> {:noreply, put_flash(socket, :error, error_string)}
     end
   end
 

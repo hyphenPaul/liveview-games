@@ -8,6 +8,7 @@
 import Config
 
 config :games,
+  ecto_repos: [Games.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint

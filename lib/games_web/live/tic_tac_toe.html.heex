@@ -1,9 +1,18 @@
-<div class="mx-auto w-80 h-80 bg-black mb-10">
-  <div class="grid grid-cols-3 grid-row-3 h-full gap-1">
-    <%= for {{y, x}, value} <- @game.grid do %>
-      <% winning_coords = Enum.member?(@game.winning_coords, {y, x}) %>
-      <button class="block text-center bg-white" phx-click="add" phx-value-x={x} phx-value-y={y} data-value={value} data-winner={winning_coords}></button>
-    <% end %>
+<div
+  class="mx-auto w-80 h-80 bg-black mb-10"
+>
+  <div
+    class="grid grid-cols-3 grid-row-3 h-full gap-1"
+  >
+    <button
+      :for={{{y, x}, value} <- @game.grid}
+      class="block text-center bg-white"
+      phx-click="add"
+      phx-value-x={x}
+      phx-value-y={y}
+      data-value={value}
+      data-winner={Enum.member?(@game.winning_coords, {y, x})}
+    ></button>
   </div>
 </div>
 

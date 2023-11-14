@@ -9,6 +9,7 @@ defmodule Games.Application do
   def start(_type, _args) do
     children = [
       GamesWeb.Telemetry,
+      Games.Repo,
       {DNSCluster, query: Application.get_env(:games, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Games.PubSub},
       # Start the Finch HTTP client for sending emails

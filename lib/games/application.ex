@@ -12,6 +12,7 @@ defmodule Games.Application do
       Games.Repo,
       {DNSCluster, query: Application.get_env(:games, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Games.PubSub},
+      Games.Presence,
       # Start the Finch HTTP client for sending emails
       {Finch, name: Games.Finch},
       # Start a worker by calling: Games.Worker.start_link(arg)

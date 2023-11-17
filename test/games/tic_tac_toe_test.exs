@@ -13,6 +13,12 @@ defmodule Games.TicTacToeTest do
       assert result.state == :playing
       assert result.winner == nil
     end
+
+    test "adds players" do
+      assert result = TicTacToe.new(123, 456)
+      assert result.players == {{:x, 123}, {:o, 456}}
+      assert result.player_turn == {:x, 123}
+    end
   end
 
   describe "add_coords/3" do
@@ -32,6 +38,22 @@ defmodule Games.TicTacToeTest do
              }
 
       assert result.round == 1
+    end
+
+    test "updates player turn and sets winner" do
+      assert result = TicTacToe.new(123, 456)
+      assert result.player_turn == {:x, 123}
+      assert {:ok, result} = TicTacToe.add_coords(result, 0, 0)
+      assert result.player_turn == {:o, 456}
+      assert {:ok, result} = TicTacToe.add_coords(result, 1, 0)
+      assert result.player_turn == {:x, 123}
+      assert {:ok, result} = TicTacToe.add_coords(result, 0, 1)
+      assert result.player_turn == {:o, 456}
+      assert {:ok, result} = TicTacToe.add_coords(result, 1, 1)
+      assert result.player_turn == {:x, 123}
+      assert {:ok, result} = TicTacToe.add_coords(result, 0, 2)
+      assert result.player_turn == nil
+      assert result.winning_player == {:x, 123}
     end
 
     test "does not allow coords to be updated" do
@@ -68,7 +90,7 @@ defmodule Games.TicTacToeTest do
       # ---------
       #   | x | 
       # ---------
-      #   |   | 
+      #   |   | x
 
       assert {:ok, result} = TicTacToe.add_coords(TicTacToe.new(), 0, 0)
       assert {:ok, result} = TicTacToe.add_coords(result, 1, 0)
